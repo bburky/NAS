@@ -169,20 +169,18 @@ Now I had to figure out a way to cut holes for all the I/O ports in the side of 
 To get near perfect measurements of the original side panel and the I/O ports, I just put them on a flatbed scanner. I also included a ruler while scanning, but the scale was already perfect.
 
 <figure>
-<a href="#">
-<figcaption>Scanned original side panel and I/O ports</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/scanned.pdf">
+<figcaption>Scanned original side panel and I/O ports [PDF]</figcaption>
+<img alt="Scanned image of original side panel and BPI-R2 I/O ports" src="images/scanned.png">
 </a>
 </figure>
 
 Then I simply outlined the original side panel and the I/O ports to create the new acrylic one.
 
 <figure>
-<a href="#">
-<figcaption>Outlines for laser cutting</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/outlines.png">
+<figcaption>Outlines for laser cutting [PDF]</figcaption>
+<img alt="Scanned image of original side panel and BPI-R2 I/O ports" src="images/outlines.png">
 </a>
 </figure>
 
