@@ -267,3 +267,18 @@ Overall I consider the project a success. I haven't found any other projects onl
 [datahoarder easystores]: https://www.reddit.com/r/DataHoarder/comments/7fx0i0/wd_easystore_8tb_compendium/
 [datahoarder gallery]: https://imgur.com/gallery/IsZxx
 [solvent welding]: https://en.wikipedia.org/wiki/Plastic_welding#Solvent_welding
+
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "https://bburky.com/NAS/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "NAS"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://bburky-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
