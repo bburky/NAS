@@ -39,7 +39,7 @@ Luckily there is a slot on the back of the case. Using something like these [ver
 <figure>
 <figcaption>Connect the cables by running them out the side...</figcaption>
 
-<a href="images/nas-open-side.jpg"><img alt="NAS with SATA cables run through side" src="images/nas-open-side.jpg"></a>
+<a href="images/nas-side-open.jpg"><img alt="NAS with SATA cables run through side" src="images/nas-side-open.jpg"></a>
 </figure>
 
 <figure>
@@ -154,11 +154,11 @@ At this point the board can be connected to the backplane and tested. I also ins
 
 <figure>
 <figcaption>It's alive!</figcaption>
-<a href="images/nas-open-side.jpg"><img alt="Side view of NAS with bottom removed and board powered on" src="images/nas-open-side.jpg"></a>
+<a href="images/nas-testing-side-open.jpg"><img alt="Side view of NAS with bottom removed and board powered on" src="images/nas-testing-side-open.jpg"></a>
 </figure>
 
 <figure>
-<a href="images/nas-testing.jpg"><img alt="Front view of NAS with bottom removed and board powered on" src="images/nas-testing.jpg"></a>
+<a href="images/nas-testing-front.jpg"><img alt="Front view of NAS with bottom removed and board powered on" src="images/nas-testing-front.jpg"></a>
 </figure>
 
 # Acrylic side panel
