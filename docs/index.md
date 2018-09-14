@@ -31,11 +31,11 @@ title: "DIY NAS / Router"
 
 The enclosure is an [Athena Power BP-SAC2131B 3.5" HDD Hot-Swap Backplane][backplane]. This is a a 3-bay hot swap backplane intended to go into two 5.25" bays of a server. This is not a trayless backplane, the hard disks must be mounted using four included screws.
 
-This is a 3-bay case, but we only need the top two bays for hard drives. In the bottom bay we will put the computer that runs the NAS. Something like a Pico-ITX or 3.5" SBC computer will fit within the footprint of a hard dive.
+This is a 3-bay case, but I only need the top two bays for hard drives. In the bottom bay I will put the computer that runs the NAS. Something like a Pico-ITX or 3.5" SBC computer will fit within the footprint of a hard dive.
 
 The main problem with using an internal enclosure as a case is that all the SATA connections ago out the back of the case, not internally for connection to a computer.
 
-Luckily there is a slot on the back of the case. Using something like these [very thin blue SATA cables][thin sata cables] we can connect an internal computer to the back of the case.
+Luckily there is a slot on the back of the case. Using something like these [very thin blue SATA cables][thin sata cables] I can connect an internal computer to the back of the case.
 
 <figure>
 <figcaption>Connect the cables by running them out the side...</figcaption>
@@ -131,7 +131,7 @@ A minor issue is that recent kernel versions actually shutdown when the reset bu
 $ echo "blacklist mtk_pmic_keys" >/etc/modules-load.d/mtk_pmic_keys.conf
 ```
 
-The second issue is that we want to power the board from the enclosure's SATA backplane. The backplane's SATA power connector's can provide the required 12V, but there is no way to power the BPI-R2 except for it's barrel connector. (There is a battery connector, but [apparently it is useless][battery connector].)
+The second issue is that I want to power the board from the enclosure's SATA backplane. The backplane's SATA power connector's can provide the required 12V, but there is no way to power the BPI-R2 except for it's barrel connector. (There is a battery connector, but [apparently it is useless][battery connector].)
 
 Instead, I decided to solder a wire directly to the pins of the barrel connector. While desoldering it I discovered there are holes in the pins. This made it easy to just loop the wire through the pins and resolder them.
 
@@ -207,7 +207,7 @@ Mount the board using whatever size of standoffs. I used some short M2 motherboa
 
 # Melt screw threads
 
-At this point I had to figure out how to mount the acrylic panel on the side of the enclosure. Ideally, I could just reuse the original screws... but acrylic is very brittle, so tapping holes with a tap is unlikely to work. Instead we melt the threads into it!
+At this point I had to figure out how to mount the acrylic panel on the side of the enclosure. Ideally, I could just reuse the original screws... but acrylic is very brittle, so tapping holes with a tap is unlikely to work. Instead I melted the threads into it!
 
 First, mark all the original holes and drill them out to their full depth. Ensure these pilot holes are sufficiently large. Unlike with normal tapping, no material is going to be removed, just melted plastic pushed out of the way. Using a drill press and drilling very slowly is probably a good idea.
 
