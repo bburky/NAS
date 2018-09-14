@@ -1,4 +1,4 @@
 theme: jekyll-theme-minimal
 title: "DIY NAS / Router"
 description: "A 2-bay, low power, ARM-based NAS and router"
-# logo: [Location of the logo]
+logo: "images/nas-finished.jpg"

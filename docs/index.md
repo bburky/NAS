@@ -39,15 +39,15 @@ Luckily there is a slot on the back of the case. Using something like these [ver
 
 <figure>
 <figcaption>Connect the cables by running them out the side...</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+
+<a href="images/nas-open-side.jpg"><img alt="NAS with SATA cables run through side" src="images/nas-open-side.jpg"></a>
 </figure>
 
 <figure>
-<figcaption>...and pluging them into the back</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<figcaption>...and plugging them into the back</figcaption>
+<a href="images/nas-back.jpg"><img alt="NAS with SATA cables connected to back" src="images/nas-back.jpg"></a>
 </figure>
+
 
 Yes, this looks a little crazy. But whatever.
 
@@ -71,8 +71,7 @@ With the fan running very slowly at 5V, the HDD temperatures measured with SMART
 Following traces by eye and verifying with a multimeter I found a 5V pin on the right side of the board to run the fan from. I clipped the center power pin from the fan connector and removed it completely so I could run a new wire into the connector through the old hole.
 
 <figure>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/nas-fan-power.jpg"><img alt="Power to fan soldered to 5V line" src="images/nas-fan-power.jpg"></a>
 </figure>
 
 Yes, this looks kind of terrible. Whatever.
@@ -87,21 +86,18 @@ To connect the power supply, I reterminated it with a modular SATA power connect
 
 <figure>
 <figcaption>Remove one of the male SATA connectors and chop off the PSU's plug</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/nas-sata-and-power-cables.jpg"><img alt="Unmodified power supply cable and SATA power splitter cable" src="images/nas-sata-and-power-cables.jpg"></a>
 </figure>
 
 <figure>
-<figcaption>The back of the SATA connector can be popped off</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<figcaption>With the back of the SATA connector new cables can be connected</figcaption>
+<a href="images/nas-terminating-power-cable.jpg"><img alt="SATA power connector and stripped power supply cable" src="images/nas-terminating-power-cable.jpg"></a>
 </figure>
 
 
 <figure>
 <figcaption>Connect all the wires... somehow</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/nas-finished-power-cable.jpg"><img alt="Wires connected to SATA power cable" src="images/nas-finished-power-cable.jpg"></a>
 </figure>
 
 Connecting both ground pins in the SATA power connector is probably unnecessary because all the ground pins are connected in the backplane. It also makes it impossible to put the cover back on the connector.
@@ -120,15 +116,13 @@ One problem with this board is it requires manually powering it on by holding th
 
 <figure>
 <figcaption>Enable auto power on by shorting PIN1 and PIN2 of RST</figcaption>
-
-![power pins image][power pins image]
+<img src="images/pwr-rst-schematic.png" alt="PWR and RST pin schematic.">
 </figure>
 
 
 <figure>
 <figcaption>PIN1 and PIN2 bridged</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/nas-bridged-rst.jpg"><img alt="RST pins bridged on underside of board" src="images/nas-bridged-rst.jpg"></a>
 </figure>
 
 A minor issue is that recent kernel versions actually shutdown when the reset button is pressed when the system is running. That can be fixed by [disabling the power button kernel module][power pins issue].
@@ -143,16 +137,14 @@ Instead, I decided to solder a wire directly to the pins of the barrel connector
 
 <figure>
 <figcaption>Power connected to barrel connector pins</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/nas-barrel-connector-unsoldered.jpg"><img alt="One black power wire connected to barrel connector pin" src="images/nas-barrel-connector-unsoldered.jpg"></a>
 </figure>
 
 Connect the power wires to a male modular SATA power connector. I had to snap the edges off of the connector to allow it to fit beside a SATA data connector on the backplane.
 
 <figure>
 <figcaption>Male SATA power connector with snapped off edges</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/nas-board-sata-power.jpg"><img alt="Male SATA power connector with snapped off edges" src="images/nas-board-sata-power.jpg"></a>
 </figure>
 
 Connect the board to the bottom SATA port. It all barely fits in the case.
@@ -163,13 +155,11 @@ At this point the board can be connected to the backplane and tested. I also ins
 
 <figure>
 <figcaption>It's alive!</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/nas-open-side.jpg"><img alt="Side view of NAS with bottom removed and board powered on" src="images/nas-open-side.jpg"></a>
 </figure>
 
 <figure>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/nas-testing.jpg"><img alt="Front view of NAS with bottom removed and board powered on" src="images/nas-testing.jpg"></a>
 </figure>
 
 # Acrylic side panel
@@ -227,8 +217,7 @@ This may discolor the screws some, but you can rearrange them when done to hide 
 
 <figure>
 <figcaption>Enclosure with acrylic and SBC mounted</figcaption>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/nas-finished-acrylic.jpg"><img alt="NAS with acrylic panel and no hard drives installed" src="images/nas-finished-acrylic.jpg"></a>
 </figure>
 
 # Done!
@@ -236,15 +225,13 @@ This may discolor the screws some, but you can rearrange them when done to hide 
 Stick some adhesive rubber feet on the bottom and plug it in.
 
 <figure>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/nas-finished-leds.jpg"><img alt="Finished NAS powered on with lights" src="images/nas-finished-leds.jpg"></a>
 </figure>
 
 The finished product sits with the rest of my networking equipment under my TV:
 
 <figure>
-<div style="background: grey; height: 400px;"></div>
-<!-- TODO: picture -->
+<a href="images/nas-tv.jpg"><img alt="NAS and other home networking equipment on a wire shelf" src="images/nas-tv.jpg"></a>
 </figure>
 
 # Shuck hard drives
@@ -279,7 +266,6 @@ Overall I consider the project a success. I haven't found any other projects onl
 [bpi-r2]: http://www.banana-pi.org/r2.html
 [power pins issue]: https://github.com/frank-w/BPI-R2-4.14/issues/35
 [power pins forum]: http://forum.banana-pi.org/t/bpi-r2-boot-power-suppy/3647
-[power pins image]: http://forum.banana-pi.org/uploads/default/original/2X/9/952dc026032a3b0d87ed7e368b9eec2c47d47851.png
 [battery connector]: http://forum.banana-pi.org/t/battery-cable-circuit/3737/9
 [datahoarder easystores]: https://www.reddit.com/r/DataHoarder/comments/7fx0i0/wd_easystore_8tb_compendium/
 [datahoarder gallery]: https://imgur.com/gallery/IsZxx
