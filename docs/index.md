@@ -6,7 +6,7 @@ title: "DIY NAS / Router"
 *   Cost less than a cheap commercial 2-bay NAS (~$200)
 *   Low power
 *   Function as a NAS for local file sharing
-*   Run IoT things like Home Assistant
+*   Run IoT things like [Home Assistant]
 *   Function as a limited router to segregate scary "smart" devices on the LAN
 *   Maybe run a 2.4Ghz AP for IoT devices
 
@@ -60,13 +60,13 @@ I considered replacing it with a quiet computer fan, but it uses a nonstandard f
 
 Disconnecting the fan is difficult because a buzzer alarm sounds when the enclosure detects 0 RPM on the fan. The alarm may be silenced by pressing the "reset" button, but it will sound each time the NAS is power cycled. However, it appears two pins on the back of the case are connected to the front reset button, so you can simply put a jumper across them to permanently silence the buzzer.
 
-The bigger problem is that HDDs actually get hot. Not much, but they do require some cooling. With the fan disconnected the disks quickly got close to 45°C and kept climbing.
+The bigger problem is that HDDs actually get hot. Not much, but they do require some cooling. With the fan disconnected the disks quickly got up to 45°C and kept climbing towards 50°C.
 
 There is a "HIGH–LOW" switch on the back of the enclosure to slow the fan down, but it doesn't significantly reduce the fan noise. Measuring with a voltmeter, it switches the input of the fan from 12V to ~9V.
 
 Instead I connected the fan's power directly to the 5V line. Do note that this doesn't work with all computer fans, not all will start with significantly reduced voltage. It seemed to work fine with this specific fan though. Supposedly, another option is to to run the fan at 7V by leaving the fan connected to 12V and connecting it's ground pin to the 5V line, but I didn't try it.
 
-With the fan running very slowly at 5V, the HDD temperatures measured with SMART stay at a steady 41°C which I decided was acceptable.
+With the fan running very slowly at 5V, the HDD temperatures measured with SMART stay at a steady 44°C which I decided was acceptable.
 
 Following traces by eye and verifying with a multimeter I found a 5V pin on the right side of the board to run the fan from. I clipped the center power pin from the fan connector and removed it completely so I could run a new wire into the connector through the old hole.
 
@@ -111,7 +111,7 @@ Connecting both ground pins in the SATA power connector is probably unnecessary 
 Because no standard PC motherboard will fit in this enclosure, we are in the realm of single board computers (SBC). However, there are very few boards that have SATA support. And of the few that do have SATA, very _very_ few have more than one SATA port.
 
 <!-- TODO: Ethernet bandwidth -->
-I selected the [Banana Pi BPI-R2][bpi-r2] because it had two SATA connectors and gigabit Ethernet. As a bonus, it actually has a total of 5 GbE ports that share ???Gb of bandwith, this is nice if I want some router functionality also. This board connects the SATA ports to the SoC via a ASM1061 SATA controller connected via PCIe. Most cheaper boards actually connect their SATA ports via USB, so this should be a good choice.
+I selected the [Banana Pi BPI-R2][bpi-r2] because it had two SATA connectors and gigabit Ethernet. As a bonus, it actually has a total of 5 GbE ports that share ???Gb of bandwidth, this is nice if I want some router functionality also. This board connects the SATA ports to the SoC via a ASM1061 SATA controller connected via PCIe. Most cheaper boards actually connect their SATA ports via USB, so this should be a good choice.
 
 <!-- TODO: other SATA boards -->
 > Since I started this project a few other boards with multiple SATA have become available. The BPI-R2 is still one of the cheapest with 2 SATA ports though.
@@ -137,9 +137,9 @@ A minor issue is that recent kernel versions actually shutdown when the reset bu
 $ echo "blacklist mtk_pmic_keys" >/etc/modules-load.d/mtk_pmic_keys.conf
 ```
 
-The second issue is that we want to power the board from the enclosure's SATA backplane. The backplane's SATA power connector's can provive the required 12V, but there is no way to power the BPI-R2 except for it's barrel connector. (There is a battery connector, but [apparently it is useless][battery connector].)
+The second issue is that we want to power the board from the enclosure's SATA backplane. The backplane's SATA power connector's can provide the required 12V, but there is no way to power the BPI-R2 except for it's barrel connector. (There is a battery connector, but [apparently it is useless][battery connector].)
 
-Instead, I decided to solder a wire directly to the pins of the barrel connector. While desoldering it I disovered there are holes in the pins. This made it easy to just loop the wire through the pins and resolder them.
+Instead, I decided to solder a wire directly to the pins of the barrel connector. While desoldering it I discovered there are holes in the pins. This made it easy to just loop the wire through the pins and resolder them.
 
 <figure>
 <figcaption>Power connected to barrel connector pins</figcaption>
@@ -259,14 +259,14 @@ There are a lot of details about EasyStores [on Reddit][datahoarder easystores] 
 
 After completing this project, I have discovered a few things I'm unhappy with. Basically ARM boards only make so-so servers.
 
-*   Only **2GB RAM**.
+*   Only **2GB RAM.**
 *   **Slow**. Even if it's quad core, 32-bit ARM isn't very fast.
 *   **SATA bandwidth limited to ~300MB/sec** total. Some reason the total SATA bandwidth is not the full SATA3 speeds, even though it negotiates a 6.0GB/s link. I believe the ASM1061 SATA controller may be connected to the SOC by only a single PCI-E 2.0 lane, reducing the speed significantly. [See details][SATA performance]. This isn't too much of a problem unless you use an SSD though, spinning disks are fairly slow.
-*   **No ZFS**. I like ZFS a lot for a NAS, but it isn't very usable on a low RAM 32-bit ARM board. I actually compiled it, but I only get 60 MB/sec write speeds to a ZFS mirrored pool. And depending on who you listen to, running ZFS without ECC is a terrible idea.
-*   **No RTC**. I'm going to attempt to connect a cheap DS3231 "Raspberry Pi RTC" someday.
-*   **No mainline Linux**. The MediaTek MT7623N is slowly creeping towards mainline Linux, but it's not there yet.
-*   **No HNAT**. This MediaTek SOC supports "HNAT" which should allow doing simple network switching and NAT at gigabit line speeds. But it involves a bunch of out-of-tree Linux patches, and doesn't work on current kernels.
-*   **Terrible Wi-Fi chip**. The BPI-R2 does include a 2.4 GHz Wi-Fi/Bluetooth chip, but it's not very good. It requires out-of-tree patches and binary blobs. And really weird runtime configuration to provide the firmware. I should be able to add a reasonable Wi-Fi card in the Mini PCIe slot though
+*   **No ZFS.** I like ZFS a lot for a NAS, but it isn't very usable on a low RAM 32-bit ARM board. I actually compiled it, but I only get 60 MB/sec write speeds to a ZFS mirrored pool. And depending on who you listen to, running ZFS without ECC is a terrible idea.
+*   **No RTC.** I'm going to attempt to connect a cheap DS3231 "Raspberry Pi RTC" someday.
+*   **No mainline Linux.** The MediaTek MT7623N is slowly creeping towards mainline Linux, but it's not there yet.
+*   **No HNAT.** This MediaTek SOC supports "HNAT" which should allow doing simple network switching and NAT at gigabit line speeds. But it involves a bunch of out-of-tree Linux patches, and doesn't work on current kernels.
+*   **Terrible Wi-Fi chip.** The BPI-R2 does include a 2.4 GHz Wi-Fi/Bluetooth chip, but it's not very good. It requires out-of-tree patches and binary blobs. And really weird runtime configuration to provide the firmware. I should be able to add a reasonable Wi-Fi card in the Mini PCIe slot though
 
 # Conclusion
 
@@ -284,3 +284,4 @@ Overall I consider the project a success. I haven't found any other projects onl
 [datahoarder easystores]: https://www.reddit.com/r/DataHoarder/comments/7fx0i0/wd_easystore_8tb_compendium/
 [datahoarder gallery]: https://imgur.com/gallery/IsZxx
 [solvent welding]: https://en.wikipedia.org/wiki/Plastic_welding#Solvent_welding
+[home assistant]: https://www.home-assistant.io/
