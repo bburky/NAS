@@ -1,6 +1,6 @@
-# DIY NAS / Router
-
-> A 2-bay, low power, ARM-based NAS and router
+---
+title: "DIY NAS / Router"
+---
 
 # Goals
 *   Cost less than a cheap commercial 2-bay NAS (~$200)
