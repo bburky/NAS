@@ -5,10 +5,9 @@ title: "DIY NAS / Router"
 # Goals
 *   Cost less than a cheap commercial 2-bay NAS (~$200)
 *   Low power
-*   Function as a NAS for local file sharing
-*   Run IoT things like [Home Assistant]
-*   Function as a limited router to segregate scary "smart" devices on the LAN
-*   Maybe run a 2.4Ghz AP for IoT devices
+*   NAS for local file sharing
+*   A limited router to segregate scary "smart" devices on the LAN
+*   Maybe run some IoT things
 
 # Parts
 
@@ -175,17 +174,17 @@ To get near perfect measurements of the original side panel and the I/O ports, I
 </a>
 </figure>
 
-Then I simply outlined the original side panel and the I/O ports to create the new acrylic one.
+Then I simply outlined the original side panel and each of the I/O ports. I measured the height of the BPI-R2 with motherboard standoffs attached, then placed the I/O port outlines at that height. I also took a lot of measurements to ensure I used the right thickness of acrylic.
 
 <figure>
-<a href="images/outlines.png">
+<a href="images/outlines.pdf">
 <figcaption>Outlines for laser cutting [PDF]</figcaption>
 <img alt="Scanned image of original side panel and BPI-R2 I/O ports" src="images/outlines.png">
 </a>
 </figure>
 
 
-In reality, the acrylic is too thick and some ports are too recessed to be usable. I had to bevel the edges of the HDMI port before it was usable. The OTG micro USB port isn't really usable, but I don't need it. All the other ports are fine.
+In reality, the acrylic is too thick and some ports are too recessed to be usable. The HDMI port usually works, but requires firmly pushing the cable all the way in. The micro USB port isn't really usable, but I don't need it. All the other ports are fine.
 
 # Weld acrylic
 
@@ -201,7 +200,7 @@ It's probably a good idea to do this step in a well ventilated area and wear app
 
 Mark all the screw locations on the bottom metal plate and drill them out using a drill press. Make sure the board is as far close to the front edge as possible so the SD card slot will be accessible.
 
-Mount the board using whatever size of standoffs. I used some short M2 motherboard standoffs I think.
+Mount the board using whatever size of motherboard standoffs. I used some short M2 motherboard standoffs I think.
 
 # Melt screw threads
 
@@ -246,12 +245,12 @@ After completing this project, I have discovered a few things I'm unhappy with. 
 
 *   Only **2GB RAM.**
 *   **Slow**. Even if it's quad core, 32-bit ARM isn't very fast.
-*   **SATA bandwidth limited to ~300MB/sec** total. Some reason the total SATA bandwidth is not the full SATA3 speeds, even though it negotiates a 6.0GB/s link. I believe the ASM1061 SATA controller may be connected to the SOC by only a single PCI-E 2.0 lane, reducing the speed significantly. [See details][SATA performance]. This isn't too much of a problem unless you use an SSD though, spinning disks are fairly slow.
+*   **SATA bandwidth limited to ~300MB/sec** total. Some reason the total SATA bandwidth is not the full SATA3 speeds, even though it negotiates a 6.0GB/s link. I believe the ASM1061 SATA controller may be connected to the SOC by only a single PCIe 2.0 lane, reducing the speed significantly. [See details][SATA performance]. This isn't too much of a problem unless you use an SSD though, spinning disks are fairly slow.
 *   **No ZFS.** I like ZFS a lot for a NAS, but it isn't very usable on a low RAM 32-bit ARM board. I actually compiled it, but I only get 60 MB/sec write speeds to a ZFS mirrored pool. And depending on who you listen to, running ZFS without ECC is a terrible idea.
 *   **No RTC.** I'm going to attempt to connect a cheap DS3231 "Raspberry Pi RTC" someday.
 *   **No mainline Linux.** The MediaTek MT7623N is slowly creeping towards mainline Linux, but it's not there yet.
 *   **No HNAT.** This MediaTek SOC supports "HNAT" which should allow doing simple network switching and NAT at gigabit line speeds. But it involves a bunch of out-of-tree Linux patches, and doesn't work on current kernels.
-*   **Terrible Wi-Fi chip.** The BPI-R2 does include a 2.4 GHz Wi-Fi/Bluetooth chip, but it's not very good. It requires out-of-tree patches and binary blobs. And really weird runtime configuration to provide the firmware. I should be able to add a reasonable Wi-Fi card in the Mini PCIe slot though
+*   **Terrible Wi-Fi chip.** The BPI-R2 does include a 2.4 GHz Wi-Fi/Bluetooth chip, but it's not very good. It requires out-of-tree patches _and_ binary blobs. And really weird runtime configuration to provide the firmware. I should be able to add a reasonable Wi-Fi card in the Mini PCIe slot though
 
 # Conclusion
 
@@ -268,4 +267,3 @@ Overall I consider the project a success. I haven't found any other projects onl
 [datahoarder easystores]: https://www.reddit.com/r/DataHoarder/comments/7fx0i0/wd_easystore_8tb_compendium/
 [datahoarder gallery]: https://imgur.com/gallery/IsZxx
 [solvent welding]: https://en.wikipedia.org/wiki/Plastic_welding#Solvent_welding
-[home assistant]: https://www.home-assistant.io/
