@@ -64,7 +64,7 @@ There is a "HIGH–LOW" switch on the back of the enclosure to slow the fan down
 
 Instead I connected the fan's power directly to the 5V line. Do note that this doesn't work with all computer fans, not all will start with significantly reduced voltage. It seemed to work fine with this specific fan though. Supposedly, another option is to to run the fan at 7V by leaving the fan connected to 12V and connecting it's ground pin to the 5V line, but I didn't try it.
 
-With the fan running very slowly at 5V, the HDD temperatures measured with SMART stay at a steady 44°C which I decided was acceptable.
+With the fan running very slowly at 5V, the HDD temperatures measured with SMART gets no higher than 44°C which I decided was acceptable.
 
 Following traces by eye and verifying with a multimeter I found a 5V pin on the right side of the board to run the fan from. I clipped the center power pin from the fan connector and removed it completely so I could run a new wire into the connector through the old hole.
 
@@ -243,7 +243,6 @@ After completing this project, I have discovered a few things I'm unhappy with. 
 *   Only **2GB RAM.**
 *   **Slow**. Even if it's quad core, 32-bit ARM isn't very fast.
 *   **SATA bandwidth limited to ~300MB/sec** total. Some reason the total SATA bandwidth is not the full SATA3 speeds, even though it negotiates a 6.0GB/s link. I believe the ASM1061 SATA controller may be connected to the SOC by only a single PCIe 2.0 lane, reducing the speed significantly. [See details][SATA performance]. This isn't too much of a problem unless you use an SSD though, spinning disks are fairly slow.
-*   **No ZFS.** I like ZFS a lot for a NAS, but it isn't very usable on a low RAM 32-bit ARM board. I actually compiled it, but I only get 60 MB/sec write speeds to a ZFS mirrored pool. And depending on who you listen to, running ZFS without ECC is a terrible idea.
 *   **No RTC.** I'm going to attempt to connect a cheap DS3231 "Raspberry Pi RTC" someday.
 *   **No mainline Linux.** The MediaTek MT7623N is slowly creeping towards mainline Linux, but it's not there yet.
 *   **No HNAT.** This MediaTek SOC supports "HNAT" which should allow doing simple network switching and NAT at gigabit line speeds. But it involves a bunch of out-of-tree Linux patches, and doesn't work on current kernels.
