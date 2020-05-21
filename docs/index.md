@@ -32,7 +32,7 @@ The enclosure is an [Athena Power BP-SAC2131B 3.5" HDD Hot-Swap Backplane Module
 
 This is a 3-bay case, but I only need the top two bays for hard drives. In the bottom bay I will put the computer that runs the NAS. Something like a Pico-ITX or 3.5" SBC computer will fit within the footprint of a hard dive.
 
-The main problem with using an internal enclosure as a case is that all the SATA connections ago out the back of the case, not internal for connections to a computer.
+The main problem with using an internal enclosure as a case is that all the SATA connections go out the back of the case, not internal for connections to a computer.
 
 Luckily there is a slot on the back of the case. Using something like these [very thin blue SATA cables][thin sata cables], I can connect an internal computer to the back of the case.
 
